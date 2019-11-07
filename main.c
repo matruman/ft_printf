@@ -5,7 +5,7 @@ int		main(int ac, char **av)
 {
 	t_format_list	*format_list;
 
-	format_list = get_format_list("sfsdf%#020.45ldffs%020%.77hlhhlhlLlllhhhLsfdgdfg%%sf");
+	format_list = get_format_list(av[1]);
 	int		i = 1;
 	while (format_list)
 	{
