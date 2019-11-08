@@ -92,9 +92,8 @@ int main(int ac, char **av)
 		}
 		y++;
 	}
-	print(c, x);
-	cout << "\nAmount of different options: " << x << "\n\n";
-	cout << "Amount of all options: " << m << "\n\n";
-	cout << "\n";
+//	print(c, x);
+	cout << "Amount of different options: " << x << "\n";
+	cout << "Amount of all options: " << m << "\n";
 	return 0;
 }

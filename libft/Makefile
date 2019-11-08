@@ -6,7 +6,7 @@
 #    By: matruman <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/17 14:12:57 by matruman          #+#    #+#              #
-#    Updated: 2019/10/06 18:36:40 by matruman         ###   ########.fr        #
+#    Updated: 2019/11/08 15:00:13 by matruman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c\
 		  ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c\
 		  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c\
 		  ft_putnbr_fd.c ft_lstadd.c ft_lstdel.c ft_lstdelone.c\
-		  ft_lstiter.c ft_lstmap.c ft_lstnew.c ft_lstcutelem.c
+		  ft_lstiter.c ft_lstmap.c ft_lstnew.c ft_lstcutelem.c\
+		  ft_putstrn.c
 
 CC = gcc
 HEADER = includes/

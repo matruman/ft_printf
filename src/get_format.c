@@ -6,7 +6,7 @@
 /*   By: matruman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:25:05 by matruman          #+#    #+#             */
-/*   Updated: 2019/11/02 16:17:56 by matruman         ###   ########.fr       */
+/*   Updated: 2019/11/06 14:11:12 by matruman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ int		get_flags(const char *format, t_format_list *format_list)
 	while (isflag(format[i]))
 	{
 		if (format[i] == '#')
-			(format_list->flags)[0] = '#';
-		if (format[i] == '0')
-			(format_list->flags)[1] = '0';
-		if (format[i] == '+')
-			(format_list->flags)[2] = '+';
-		if (format[i] == '-')
-			(format_list->flags)[3] = '-';
+			format_list->flag.hash = 1;
+		else if (format[i] == '0')
+			format_list->flag.zero = 1;
+		else if (format[i] == ' ')
+			format_list->flag.space = 1;
+		else if (format[i] == '+')
+			format_list->flag.plus = 1;
+		else if (format[i] == '-')
+			format_list->flag.minus = 1;
 		i++;
 	}
 	return (i);
@@ -46,6 +48,7 @@ int		get_precision(int start, const char *format, t_format_list *format_list)
 	{
 		start++;
 		format_list->precision = ft_atoi(format + start);
+		format_list->precision_flag = 1;
 		while (ft_isdigit(format[start]))
 			start++;
 	}
@@ -58,23 +61,23 @@ int		get_mod(int start, const char *format, t_format_list *format_list)
 	{
 		if (format[start] == 'h')
 		{
-			(format_list->mod)[0] = 'h';
+			format_list->mod.h = 1;
 			if (format[start + 1] == 'h')
-				(format_list->mod)[1] = 'h';
+				format_list->mod.hh = 1;
 		}
 		if (format[start] == 'l')
 		{
-			(format_list->mod)[2] = 'l';
+			format_list->mod.l = 1;
 			if (format[start + 1] == 'l')
-				(format_list->mod)[3] = 'l';
+				format_list->mod.ll = 1;
 		}
 		if (format[start] == 'L')
-			(format_list->mod)[4] = 'L';
+			format_list->mod.L = 1;
 		start++;
 	}
 	return (start);
 }
-		
+
 
 int		get_conv(int start, const char *format, t_format_list *format_list)
 {
@@ -101,7 +104,7 @@ int				get_format(const char *format, t_format_list *format_list)
 	start = get_mod(start, format, format_list);
 	if (get_conv(start, format, format_list))
 	{
-		format_list->len = start - format_list->position;
+		format_list->len = start - format_list->position + 1;
 		return (format_list->len);
 	}
 	else
