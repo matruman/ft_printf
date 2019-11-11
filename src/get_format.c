@@ -59,20 +59,20 @@ int		get_mod(int start, const char *format, t_format_list *format_list)
 {
 	while (ismod(format[start]))
 	{
-		if (format[start] == 'h')
+		if (format[start] == 'h' && !(format_list->mod.hh))
 		{
 			format_list->mod.h = 1;
-			if (format[start + 1] == 'h')
+			if (format[start + 1] == 'h' && !(format_list->mod.h = 0))
 				format_list->mod.hh = 1;
 		}
-		if (format[start] == 'l')
+		if (format[start] == 'l' && !(format_list->mod.ll))
 		{
 			format_list->mod.l = 1;
-			if (format[start + 1] == 'l')
+			if (format[start + 1] == 'l' && !(format_list->mod.l = 0))
 				format_list->mod.ll = 1;
 		}
 		if (format[start] == 'L')
-			format_list->mod.L = 1;
+			format_list->mod.bl = 1;
 		start++;
 	}
 	return (start);
@@ -93,11 +93,6 @@ int				get_format(const char *format, t_format_list *format_list)
 {
 	int		start;
 
-	if (format[format_list->position + 1] == '%')
-	{
-		format_list->conv = '%';
-		return (1);
-	}
 	start = get_flags(format, format_list);
 	start = get_width(start, format, format_list);
 	start = get_precision(start, format, format_list);

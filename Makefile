@@ -6,11 +6,11 @@
 #    By: sjamie <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/12 19:29:46 by sjamie            #+#    #+#              #
-#    Updated: 2019/11/08 16:48:42 by matruman         ###   ########.fr        #
+#    Updated: 2019/11/09 15:50:41 by matruman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= ft_printf
+NAME			= libftprintf.a
 
 CC				= gcc
 HEADER			= includes/
@@ -21,17 +21,20 @@ SRC				=	src/ft_itoa_base.c\
 					src/get_format.c\
 					src/get_format_list.c\
 					src/helps.c\
-					src/main.c\
 					src/print_conv_di.c\
 					src/print_format.c\
-					src/print_conv_ouxX.c
+					src/print_conv_pouxx.c\
+					src/print_conv_cp.c\
+					src/print_conv_s.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 
 all: $(NAME)
 
 $(NAME): lib $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L libft/ -lft
+	#$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L libft/ -lft
+	ar rc $(NAME) libft/*.o $(OBJ)
+	ranlib $(NAME)
 
 lib:
 	make -C libft

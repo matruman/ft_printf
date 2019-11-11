@@ -22,7 +22,6 @@ int				ft_printf(const char *format, ...)
 
 	va_start(ap, format);
 	format_list = get_format_list(format, &ap);
-	print_format_list(format_list);
 	
-	return (0);
+	return (print_format_list(format_list));
 }	

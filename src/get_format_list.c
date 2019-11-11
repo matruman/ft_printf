@@ -23,7 +23,7 @@ void			zero_format(t_format_list *format_list)
 	format_list->mod.hh = 0;
 	format_list->mod.l = 0;
 	format_list->mod.ll = 0;
-	format_list->mod.L = 0;
+	format_list->mod.bl = 0;
 	format_list->conv = 0;
 	format_list->position = 0;
 	format_list->len = 0;

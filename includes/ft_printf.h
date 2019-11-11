@@ -34,7 +34,7 @@ struct				s_mod
 	char	hh;
 	char	l;
 	char	ll;
-	char	L;
+	char	bl;
 };
 
 typedef struct		s_format_list
@@ -62,9 +62,12 @@ char				*ft_itoa_base(unsigned long long value, int base);
 unsigned long long	get_unsigned(long long value);
 int					print_format_list(t_format_list *format_list);
 int					print_conv_di(t_format_list *format_list);
-int					print_conv_ouxX(t_format_list *format_list);
+int					print_conv_pouxx(t_format_list *format_list);
+int					print_conv_cp(t_format_list *format_list);
+int					print_conv_s(t_format_list *format_list);
 char				*add_prefix(char *str, int count, char c);
 char    			*add_suffix(char *str, int count, char c);
 int					ft_printf(const char *format, ...);
+void				ft_strcap(char *str);
 
 #endif

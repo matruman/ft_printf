@@ -20,18 +20,15 @@ int		print_format(t_format_list *format_list)
 	if (format_list->conv == 'd' || format_list->conv == 'i')
 		count = print_conv_di(format_list);
 	else if (format_list->conv == 'o' || format_list->conv == 'u'
-		|| format_list->conv == 'x' || format_list->conv == 'X')
-		count = print_conv_ouxX(format_list);
-/*	else if (format_list->conv == 'c')
-		count = print_conv_c(format_list);
+		|| format_list->conv == 'x' || format_list->conv == 'X'
+		|| format_list->conv == 'p')
+		count = print_conv_pouxx(format_list);
+	else if (format_list->conv == 'c' || format_list->conv == '%')
+		count = print_conv_cp(format_list);
 	else if (format_list->conv == 's')
 		count = print_conv_s(format_list);
-	else if (format_list->conv == 'p')
-		count = print_conv_p(format_list);
-	else if (format_list->conv == 'f')
+/*	else if (format_list->conv == 'f')
 		count = print_conv_f(format_list);
-	else if (format_list->conv == '%')
-		count = print_conv_percent(format_list);
 */	return (count);
 }
 
