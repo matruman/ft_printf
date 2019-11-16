@@ -28,7 +28,7 @@ int		print_format(t_format_list *format_list)
 	else if (format_list->conv == 's')
 		count = print_conv_s(format_list);
 /*	else if (format_list->conv == 'f')
-		count = print_conv_f(format_list);
+		count = print_conv_float(format_list);
 */	return (count);
 }
 

@@ -37,6 +37,15 @@ struct				s_mod
 	char	bl;
 };
 
+typedef struct				s_float
+{
+	unsigned long long		m;
+	int						e;
+	char					sign;
+	char					*str;
+	int						*pow10;
+}							t_float;
+
 typedef struct		s_format_list
 {
 	const char				*format;
