@@ -24,7 +24,7 @@ t_float		*get_params(t_format_list *format_list, double f)
 	return (fl);
 }
 
-void	*get_fstr(t_float *fl)
+void	get_fstr(t_float *fl)
 {
 	t_big_int	*tmp;
 	t_big_int	*tmp1;
@@ -39,13 +39,19 @@ void	*get_fstr(t_float *fl)
 	tmp = b_int_add(tmp1, tmp2);
 	big_int_del(tmp1);
 	big_int_del(tmp2);
+	if (fl->e < 1023)
+	{
+		tmp1 = pow_mult(tmp, 10, 1023 - fl->e);
+		big_int_del(tmp);
+		tmp = tmp1;
+	}
 	tmp1 = pow_mult(tmp, 2, fl->e - 1023);
 	fl->str = big_int_tostr(tmp1);
 	big_int_del(tmp1);
 	big_int_del(tmp);
 }
 
-
+/*
 int     print_conv_float(t_format_list *format_list)
 {
     char		*fstr;
@@ -56,5 +62,6 @@ int     print_conv_float(t_format_list *format_list)
 	f = va_arg(*(format_list->ap), double);
 	fl = get_params(format_list, f);
 	get_fstr(fl);
+	printf("%s\n", fl->str);
 	return (0);
-}
+}*/
