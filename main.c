@@ -54,7 +54,11 @@ int		main(int ac, char **av)
 	}
 */
 	int a = -5;
-	ft_printf("First:\t%+020d\nSecond:\t%#20llu\nThird:\t%p\n", a, 15446744073709551610, &a);
-	printf("%p\n", &a); 
+	double	d = 0.000001;
+	ft_printf("%f\n", d);
+	ft_printf("%.18f\n", d);
+//	printf("d: %s\n", ft_itoa_base(*((unsigned long long *)&d + 1), 2));
+//	printf("m: %s\n", ft_itoa_base(*((unsigned long long *)&md + 1), 2));
+	printf("%.20f\n", d);
 	return (0);
 }

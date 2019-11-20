@@ -42,8 +42,10 @@ typedef struct				s_float
 	unsigned long long		m;
 	int						e;
 	char					sign;
+	char					lflag;
 	char					*str;
-	int						*pow10;
+	char					*intpart;
+	char					*fraction;
 }							t_float;
 
 typedef struct		s_format_list
@@ -67,6 +69,7 @@ int					get_format(const char *format, t_format_list *format_list);
 int					isconv(char c);
 int					isflag(char c);
 int					ismod(char c);
+char				*ft_strndup(char *str, size_t n);
 char				*ft_itoa_base(unsigned long long value, int base);
 unsigned long long	get_unsigned(long long value);
 int					print_format_list(t_format_list *format_list);
@@ -74,6 +77,7 @@ int					print_conv_di(t_format_list *format_list);
 int					print_conv_pouxx(t_format_list *format_list);
 int					print_conv_cp(t_format_list *format_list);
 int					print_conv_s(t_format_list *format_list);
+int					print_conv_float(t_format_list *format_list);
 char				*add_prefix(char *str, int count, char c);
 char    			*add_suffix(char *str, int count, char c);
 int					ft_printf(const char *format, ...);

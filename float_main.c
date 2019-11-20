@@ -10,10 +10,10 @@ int     main(int ac, char **av)
 	t_float			*fl;
 	double			d;
 
-	d = 0.00000000000000000000000000000000000000000000000000000000000000432432443232;
+	d = 432432443232;
 	fl = get_params(flist, d);
 	get_fstr(fl);
-	printf("%202.138s\n", fl->str);
-	printf("%.200f\n", d);
+	printf("%s\n", fl->str);
+//	printf("%.200f\n", d);
 	return (0);
 }

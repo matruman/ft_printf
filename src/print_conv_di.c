@@ -59,9 +59,8 @@ void	di_handler(char **dstr, int d, int sign, t_format_list *format_list)
 		|| format_list->flag.plus || (sign == '-'))  - ft_strlen(*dstr), '0');
 	if (sign == '-' || format_list->flag.plus)
 		*dstr = add_prefix(*dstr, 1, sign);
-	if ( !(format_list->flag.plus) && sign == '+' && format_list->flag.space
-		&& (sign = ' '))
-		*dstr = add_prefix(*dstr, 1, sign);
+	if ( !(format_list->flag.plus) && sign == '+' && format_list->flag.space)
+		*dstr = add_prefix(*dstr, 1, ' ');
 	if (format_list->flag.zero == 0 && format_list->flag.minus == 0)
 		*dstr = add_prefix(*dstr, format_list->width - ft_strlen(*dstr), ' ');
 	if (format_list->flag.minus)
