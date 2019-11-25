@@ -20,8 +20,8 @@ SRC				=	src/ft_itoa_base.c\
 					src/ft_printf.c\
 					src/get_format.c\
 					src/get_format_list.c\
-					src/helps.c\
-					src/helps1.c\
+					src/pf_helps.c\
+					src/pf_helps1.c\
 					src/print_conv_di.c\
 					src/print_format.c\
 					src/print_conv_pouxx.c\

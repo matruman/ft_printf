@@ -21,7 +21,7 @@ int		print_format(t_format_list *format_list)
 		count = print_conv_di(format_list);
 	else if (format_list->conv == 'o' || format_list->conv == 'u'
 		|| format_list->conv == 'x' || format_list->conv == 'X'
-		|| format_list->conv == 'p')
+		|| format_list->conv == 'p' || format_list->conv == 'b')
 		count = print_conv_pouxx(format_list);
 	else if (format_list->conv == 'c' || format_list->conv == '%')
 		count = print_conv_cp(format_list);

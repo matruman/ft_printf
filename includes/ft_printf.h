@@ -81,7 +81,8 @@ int							print_conv_s(t_format_list *format_list);
 int							print_conv_float(t_format_list *format_list);
 char						*add_prefix(char *str, int count, char c);
 char						*add_suffix(char *str, int count, char c);
-int							ft_printf(const char *format, ...);
 void						ft_strcap(char *str);
+void						free_format_list(t_format_list *list);
+int							ft_printf(const char *format, ...);
 
 #endif

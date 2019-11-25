@@ -55,7 +55,7 @@ int		main(int ac, char **av)
 */
 	int a = -5;
 	double	d = 0;
-	ft_printf("%.7f", 9873.000001);
+	ft_printf("%25.20b\n", 12345);
 //	ft_printf("%.18f\n", d);
 //	printf("d: %s\n", ft_itoa_base(*((unsigned long long *)&d + 1), 2));
 //	printf("m: %s\n", ft_itoa_base(*((unsigned long long *)&md + 1), 2));

@@ -32,6 +32,8 @@ static char		*get_str(t_format_list *format_list, unsigned long long u,
 
 int				conv_base(char conv)
 {
+	if (conv == 'b')
+		return (2);
 	if (conv == 'o')
 		return (8);
 	if (conv == 'u')
