@@ -16,9 +16,10 @@ t_big_int	*b_int_add(t_big_int *a, t_big_int *b)
 {
 	t_big_int	*res;
 	t_big_int	*min;
-	int		sum;
-	int		mem;
-	int		i;
+	int			sum;
+	int			mem;
+	int			i;
+
 	min = a->size < b->size ? a : b;
 	b_int_copy(&res, min == a ? b : a);
 	i = 0;
@@ -75,7 +76,7 @@ t_big_int	*b_int_div(t_big_int *b_int, int d)
 		(res->arr)[i] = n / d;
 		mem = n % d;
 	}
-	if ((res->arr)[res->size - 1] == 0)
+	if ((res->arr)[res->size - 1] == 0 && res->size > 1)
 		b_int_unshift(&res);
 	return (res);
 }

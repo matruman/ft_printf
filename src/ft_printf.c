@@ -12,16 +12,12 @@
 
 #include "ft_printf.h"
 
-void	print_flag(struct s_flag  flag);
-void	print_mod(struct s_mod  mod);
-
 int				ft_printf(const char *format, ...)
 {
-	va_list		ap;
+	va_list			ap;
 	t_format_list	*format_list;
 
 	va_start(ap, format);
 	format_list = get_format_list(format, &ap);
-	
 	return (print_format_list(format_list));
-}	
+}

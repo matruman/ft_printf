@@ -54,11 +54,11 @@ int		main(int ac, char **av)
 	}
 */
 	int a = -5;
-	double	d = 0.000001;
-	ft_printf("%f\n", d);
-	ft_printf("%.18f\n", d);
+	double	d = 0;
+	ft_printf("%.7f", 9873.000001);
+//	ft_printf("%.18f\n", d);
 //	printf("d: %s\n", ft_itoa_base(*((unsigned long long *)&d + 1), 2));
 //	printf("m: %s\n", ft_itoa_base(*((unsigned long long *)&md + 1), 2));
-	printf("%.20f\n", d);
+//	printf("%.50f", 9873.000001);
 	return (0);
 }

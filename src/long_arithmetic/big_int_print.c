@@ -12,7 +12,6 @@
 
 #include "long_arithmetic.h"
 
-
 static char		*add_prefix(char *str, int count, char c)
 {
 	char	*zero_str;
@@ -28,7 +27,7 @@ static char		*add_prefix(char *str, int count, char c)
 	return (res);
 }
 
-char	*ft_strstick(char **arr, int len, int size)
+char			*ft_strstick(char **arr, int len, int size)
 {
 	int		i;
 	int		j;
@@ -41,7 +40,6 @@ char	*ft_strstick(char **arr, int len, int size)
 	start = 0;
 	while (i--)
 	{
-		
 		j = 0;
 		clen = (i == size - 1) ? ft_strlen(arr[i]) : 9;
 		while (j < clen)
@@ -56,7 +54,7 @@ char	*ft_strstick(char **arr, int len, int size)
 	return (res);
 }
 
-char	*big_int_tostr(t_big_int *b_int)
+char			*big_int_tostr(t_big_int *b_int)
 {
 	char	**arr;
 	char	*res;

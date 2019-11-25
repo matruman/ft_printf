@@ -15,7 +15,7 @@
 int		print_format(t_format_list *format_list)
 {
 	int		count;
-	
+
 	count = 0;
 	if (format_list->conv == 'd' || format_list->conv == 'i')
 		count = print_conv_di(format_list);

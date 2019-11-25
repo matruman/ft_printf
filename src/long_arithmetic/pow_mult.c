@@ -12,7 +12,7 @@
 
 #include "long_arithmetic.h"
 
-int		ft_pow(int n, int p)
+int			ft_pow(int n, int p)
 {
 	int		res;
 
@@ -22,10 +22,10 @@ int		ft_pow(int n, int p)
 	return (res);
 }
 
-int		maxpower(int n)
+int			maxpower(int n)
 {
 	unsigned long long	maxp;
-	int		i;
+	int					i;
 
 	i = 0;
 	maxp = 1;

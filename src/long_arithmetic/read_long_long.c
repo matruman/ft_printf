@@ -12,10 +12,12 @@
 
 #include "long_arithmetic.h"
 
-int		get_numsize(long long n)
+int			get_numsize(long long n)
 {
 	int		size;
 
+	if (n == 0)
+		return (1);
 	size = 0;
 	while (n)
 	{
@@ -25,10 +27,12 @@ int		get_numsize(long long n)
 	return (size);
 }
 
-int		get_unumsize(unsigned long long n)
+int			get_unumsize(unsigned long long n)
 {
 	int		size;
 
+	if (n == 0)
+		return (1);
 	size = 0;
 	while (n)
 	{
@@ -61,6 +65,8 @@ t_big_int	*readll(long long n)
 		n /= BASE;
 		i++;
 	}
+	if (i == 0)
+		(big_int->arr)[0] = 0;
 	return (big_int);
 }
 
@@ -87,5 +93,7 @@ t_big_int	*readll_u(unsigned long long n)
 		n /= BASE;
 		i++;
 	}
+	if (i == 0)
+		(big_int->arr)[0] = 0;
 	return (big_int);
 }

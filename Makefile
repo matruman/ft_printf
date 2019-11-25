@@ -21,23 +21,29 @@ SRC				=	src/ft_itoa_base.c\
 					src/get_format.c\
 					src/get_format_list.c\
 					src/helps.c\
+					src/helps1.c\
 					src/print_conv_di.c\
 					src/print_format.c\
 					src/print_conv_pouxx.c\
 					src/print_conv_cp.c\
-					src/print_conv_s.c
+					src/print_conv_s.c\
+					src/get_fl.c\
+					src/print_conv_float.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 
 all: $(NAME)
 
-$(NAME): lib $(OBJ)
+$(NAME): lib la $(OBJ)
 	#$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L libft/ -lft
-	ar rc $(NAME) libft/*.o $(OBJ)
+	ar rc $(NAME) libft/*.o *.o $(OBJ)
 	ranlib $(NAME)
 
 lib:
 	make -C libft
+
+la:
+	gcc -c src/long_arithmetic/*.c $(CFLAGS)
 
 clean:
 	/bin/rm -f $(OBJ)

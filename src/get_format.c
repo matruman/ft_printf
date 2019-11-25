@@ -14,7 +14,7 @@
 
 int		get_flags(const char *format, t_format_list *format_list)
 {
-	int     i;
+	int		i;
 
 	i = format_list->position + 1;
 	while (isflag(format[i]))
@@ -34,16 +34,12 @@ int		get_flags(const char *format, t_format_list *format_list)
 	return (i);
 }
 
-int		get_width(int start, const char *format, t_format_list *format_list)
+int		get_width_precision(int start, const char *format,
+											t_format_list *format_list)
 {
 	format_list->width = ft_atoi(format + start);
 	while (ft_isdigit(format[start]))
 		start++;
-	return (start);
-}
-
-int		get_precision(int start, const char *format, t_format_list *format_list)
-{
 	if (format[start] == '.')
 	{
 		start++;
@@ -78,7 +74,6 @@ int		get_mod(int start, const char *format, t_format_list *format_list)
 	return (start);
 }
 
-
 int		get_conv(int start, const char *format, t_format_list *format_list)
 {
 	if (isconv(format[start]))
@@ -89,13 +84,12 @@ int		get_conv(int start, const char *format, t_format_list *format_list)
 	return (0);
 }
 
-int				get_format(const char *format, t_format_list *format_list)
+int		get_format(const char *format, t_format_list *format_list)
 {
 	int		start;
 
 	start = get_flags(format, format_list);
-	start = get_width(start, format, format_list);
-	start = get_precision(start, format, format_list);
+	start = get_width_precision(start, format, format_list);
 	start = get_mod(start, format, format_list);
 	if (get_conv(start, format, format_list))
 	{

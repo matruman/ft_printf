@@ -26,11 +26,6 @@ char	*ft_strndup(char *str, size_t n)
 	return (copy);
 }
 
-void	s_handler(t_format_list *format_list)
-{
-	
-}
-
 int		print_conv_s(t_format_list *format_list)
 {
 	char	*arg;

@@ -29,7 +29,7 @@ static char		*get_str(t_format_list *format_list, long long d)
 	return (dstr);
 }
 
-char	get_sign(t_format_list *format_list, long long d)
+char			get_sign(t_format_list *format_list, long long d)
 {
 	char	sign;
 
@@ -46,28 +46,30 @@ char	get_sign(t_format_list *format_list, long long d)
 	return (sign);
 }
 
-void	di_handler(char **dstr, int d, int sign, t_format_list *format_list)
+void			di_handler(char **dstr, int d, int sign,
+										t_format_list *format_list)
 {
 	if (format_list->precision_flag && !(format_list->flag.zero = 0))
 	{
 		if (d == 0 && format_list->precision == 0)
 			(*dstr)[0] = 0;
-		*dstr = add_prefix(*dstr, format_list->precision - ft_strlen(*dstr), '0');
+		*dstr = add_prefix(*dstr,
+		format_list->precision - ft_strlen(*dstr), '0');
 	}
 	else if (format_list->flag.zero && format_list->flag.minus == 0)
 		*dstr = add_prefix(*dstr, format_list->width - (format_list->flag.space
-		|| format_list->flag.plus || (sign == '-'))  - ft_strlen(*dstr), '0');
+		|| format_list->flag.plus || (sign == '-')) - ft_strlen(*dstr), '0');
 	if (sign == '-' || format_list->flag.plus)
 		*dstr = add_prefix(*dstr, 1, sign);
-	if ( !(format_list->flag.plus) && sign == '+' && format_list->flag.space)
+	if (!(format_list->flag.plus) && sign == '+' && format_list->flag.space)
 		*dstr = add_prefix(*dstr, 1, ' ');
 	if (format_list->flag.zero == 0 && format_list->flag.minus == 0)
 		*dstr = add_prefix(*dstr, format_list->width - ft_strlen(*dstr), ' ');
 	if (format_list->flag.minus)
-			*dstr = add_suffix(*dstr, format_list->width - ft_strlen(*dstr), ' ');
+		*dstr = add_suffix(*dstr, format_list->width - ft_strlen(*dstr), ' ');
 }
 
-int		print_conv_di(t_format_list *format_list)
+int				print_conv_di(t_format_list *format_list)
 {
 	long long	d;
 	int			count;

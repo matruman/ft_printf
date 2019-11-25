@@ -34,7 +34,7 @@ void			zero_format(t_format_list *format_list)
 
 t_format_list	*format_list_new(const char *format, va_list *ap)
 {
-	t_format_list   *format_list;
+	t_format_list	*format_list;
 
 	format_list = (t_format_list *)malloc(sizeof(t_format_list));
 	if (!format_list)
@@ -49,7 +49,7 @@ t_format_list	*format_list_new(const char *format, va_list *ap)
 t_format_list	*get_format_list(const char *format, va_list *ap)
 {
 	t_format_list	*format_list_start;
-	t_format_list   *format_list;
+	t_format_list	*format_list;
 	int				i;
 	int				skip;
 
@@ -63,7 +63,7 @@ t_format_list	*get_format_list(const char *format, va_list *ap)
 			format_list->position = i;
 			if ((skip = get_format(format, format_list)))
 			{
-				if((format_list->next = format_list_new(format, ap)))
+				if ((format_list->next = format_list_new(format, ap)))
 					format_list = format_list->next;
 				else
 					return (NULL);

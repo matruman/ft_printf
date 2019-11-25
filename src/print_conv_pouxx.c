@@ -30,7 +30,7 @@ static char		*get_str(t_format_list *format_list, unsigned long long u,
 	return (ustr);
 }
 
-int		conv_base(char conv)
+int				conv_base(char conv)
 {
 	if (conv == 'o')
 		return (8);
@@ -41,7 +41,7 @@ int		conv_base(char conv)
 	return (0);
 }
 
-int		get_pref(t_format_list *format_list)
+int				get_pref(t_format_list *format_list)
 {
 	if (format_list->flag.hash || format_list->conv == 'p')
 	{
@@ -54,7 +54,8 @@ int		get_pref(t_format_list *format_list)
 	return (0);
 }
 
-void	pouxx_handler(char **ustr, int u, int pf, t_format_list *format_list)
+void			pouxx_handler(char **ustr, int u, int pf,
+											t_format_list *format_list)
 {
 	if (format_list->precision_flag && !(format_list->flag.zero = 0))
 	{
@@ -78,7 +79,7 @@ void	pouxx_handler(char **ustr, int u, int pf, t_format_list *format_list)
 		*ustr = add_suffix(*ustr, format_list->width - ft_strlen(*ustr), ' ');
 }
 
-int		print_conv_pouxx(t_format_list *format_list)
+int				print_conv_pouxx(t_format_list *format_list)
 {
 	unsigned long long	u;
 	char				*ustr;
