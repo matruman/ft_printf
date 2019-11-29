@@ -59,7 +59,7 @@ t_big_int	*pow_div(t_big_int *big, int b, int pow)
 	p -= maxp;
 	bmaxp = ft_pow(b, pow - p);
 	res = b_int_div(new, bmaxp);
-	free(new);
+	big_int_del(new);
 	return (res);
 }
 
@@ -86,6 +86,6 @@ t_big_int	*pow_mult(t_big_int *big, int b, int pow)
 	p -= maxp;
 	bmaxp = ft_pow(b, pow - p);
 	res = b_int_mult(new, bmaxp);
-	free(new);
+	big_int_del(new);
 	return (res);
 }
