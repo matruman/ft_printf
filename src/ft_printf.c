@@ -20,8 +20,8 @@ int				ft_printf(const char *format, ...)
 
 	va_start(ap, format);
 	format_list = get_format_list(format, &ap);
-	va_end(ap);
 	count = print_format_list(format_list);
+	va_end(ap);
 	free_format_list(format_list);
 	return (count);
 }

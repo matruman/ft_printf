@@ -14,7 +14,7 @@ NAME			= libftprintf.a
 
 CC				= gcc
 HEADER			= includes/
-CFLAGS			=  -I $(HEADER)
+CFLAGS			= -Wall -Wextra -Werror -I $(HEADER)
 
 SRC				=	src/ft_itoa_base.c\
 					src/ft_printf.c\
@@ -28,22 +28,24 @@ SRC				=	src/ft_itoa_base.c\
 					src/print_conv_cp.c\
 					src/print_conv_s.c\
 					src/get_fl.c\
-					src/print_conv_float.c
+					src/print_conv_float.c\
+					src/long_arithmetic/big_int_print.c\
+					src/long_arithmetic/la_helps.c\
+					src/long_arithmetic/multiplication.c\
+					src/long_arithmetic/pow_mult.c\
+					src/long_arithmetic/read_long_long.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 
 all: $(NAME)
 
-$(NAME): lib la $(OBJ)
-	#$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L libft/ -lft
-	ar rc $(NAME) libft/*.o *.o $(OBJ)
+$(NAME): lib $(OBJ)
+	cp libft/libft.a ./$(NAME)
+	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
 lib:
 	make -C libft
-
-la:
-	gcc -c src/long_arithmetic/*.c $(CFLAGS)
 
 clean:
 	/bin/rm -f $(OBJ)

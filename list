@@ -1,0 +1,14 @@
+
+ft_strlen
+ft_strcpy
+ft_strncpy
+ft_putstrn
+ft_strnew
+ft_strjoin
+ft_strdup
+ft_putchar
+ft_toupper
+ft_memset
+ft_itoa
+ft_isdigit
+ft_atoi

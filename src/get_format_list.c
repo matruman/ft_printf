@@ -30,6 +30,7 @@ void			zero_format(t_format_list *format_list)
 	format_list->width = 0;
 	format_list->precision = 0;
 	format_list->precision_flag = 0;
+	format_list->percent_flag = 0;
 }
 
 t_format_list	*format_list_new(const char *format, va_list *ap)
@@ -61,14 +62,12 @@ t_format_list	*get_format_list(const char *format, va_list *ap)
 		if (format[i] == '%')
 		{
 			format_list->position = i;
-			if ((skip = get_format(format, format_list)))
-			{
-				if ((format_list->next = format_list_new(format, ap)))
-					format_list = format_list->next;
-				else
-					return (NULL);
-				i += skip - 1;
-			}
+			skip = get_format(format, format_list);
+			if ((format_list->next = format_list_new(format, ap)))
+				format_list = format_list->next;
+			else
+				return (NULL);
+			i += skip - 1;
 		}
 		i++;
 	}

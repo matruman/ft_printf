@@ -97,5 +97,10 @@ int		get_format(const char *format, t_format_list *format_list)
 		return (format_list->len);
 	}
 	else
-		return (0);
+	{
+		format_list->conv = '%';
+		format_list->percent_flag = 1;
+		format_list->len = 1;
+		return (1);
+	}
 }

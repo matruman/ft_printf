@@ -93,11 +93,12 @@ int				print_conv_pouxx(t_format_list *format_list)
 	u = va_arg(*(format_list->ap), unsigned long long);
 	ustr = get_str(format_list, u, conv_base(format_list->conv));
 	if ((!u && format_list->conv != 'p' && format_list->conv != 'o')
-	|| (format_list->conv == 'o' && format_list->width > ft_strlen(ustr)
+	|| (format_list->conv == 'o' && format_list->width > (int)ft_strlen(ustr)
 	&& format_list->flag.zero && !(format_list->precision_flag)
 	&& !(format_list->flag.minus)))
 		pf = 0;
 	pouxx_handler(&ustr, u, pf, format_list);
 	count = ft_putstrn(ustr, -1);
+	free(ustr);
 	return (count);
 }

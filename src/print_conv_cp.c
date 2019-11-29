@@ -21,8 +21,8 @@ int		print_conv_cp(t_format_list *format_list)
 	count = 0;
 	if (format_list->conv == 'c')
 		c = (char)va_arg(*(format_list->ap), int);
-	else
-		c = '%';
+	else if ((c = '%') && format_list->percent_flag)
+		return (0);
 	str = ft_strnew(1);
 	str[0] = c;
 	if (format_list->flag.zero && format_list->flag.minus == 0)

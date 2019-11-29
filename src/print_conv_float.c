@@ -66,7 +66,11 @@ void	get_fstr(t_format_list *format_list, t_float *fl)
 	int		point;
 	int		flen;
 
-	point = ft_strlen(fl->str) - 63 + ((fl->e < 16383) ? fl->e - 16383 : 0);
+	flen = ft_strlen(fl->str);
+	point = flen - 63 + ((fl->e < 16383) ? fl->e - 16383 : 0);
+	if (flen - point < format_list->precision)
+		fl->str = add_suffix(fl->str, format_list->precision -
+		(flen - point), '0');
 	if (point > 0)
 	{
 		fl->intpart = ft_strndup(fl->str, point);
@@ -80,20 +84,22 @@ void	get_fstr(t_format_list *format_list, t_float *fl)
 		flen = point + format_list->precision;
 		fl->fraction = flen > 0 ? ft_strndup(fl->str, flen) : ft_strdup("");
 		fl->fraction = add_prefix(fl->fraction, flen > 0 ?
-		format_list->precision - flen : format_list->precision, '0');
+		-point : format_list->precision, '0');
 		if (fl->str[flen > 0 ? flen : 0] > '4')
 			ft_round(&(fl->intpart), fl->fraction, format_list->precision - 1);
 	}
-	free(fl->str);
-	if (format_list->precision || format_list->flag.hash)
-		fl->intpart = add_suffix(fl->intpart, 1, '.');
-	fl->str = ft_strjoin(fl->intpart, fl->fraction);
 }
 
 void	float_handler(t_format_list *format_list, t_float *fl)
 {
 	char	s;
 
+	free(fl->str);
+	if (format_list->precision || format_list->flag.hash)
+		fl->intpart = add_suffix(fl->intpart, 1, '.');
+	fl->str = ft_strjoin(fl->intpart, fl->fraction);
+	free(fl->intpart);
+	free(fl->fraction);
 	s = fl->sign ? '-' : '+';
 	if (format_list->flag.zero && format_list->flag.minus == 0)
 		fl->str = add_prefix(fl->str, format_list->width -
@@ -109,8 +115,6 @@ void	float_handler(t_format_list *format_list, t_float *fl)
 	if (format_list->flag.minus)
 		fl->str = add_suffix(fl->str, format_list->width -
 		ft_strlen(fl->str), ' ');
-	free(fl->intpart);
-	free(fl->fraction);
 }
 
 int		print_conv_float(t_format_list *format_list)

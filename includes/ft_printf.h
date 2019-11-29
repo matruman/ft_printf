@@ -60,6 +60,7 @@ typedef struct				s_format_list
 	int						width;
 	int						precision;
 	char					precision_flag;
+	char					percent_flag;
 	struct s_format_list	*next;
 }							t_format_list;
 
